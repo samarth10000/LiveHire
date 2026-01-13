@@ -10,7 +10,7 @@ export const connectDB = async () => {
     const conn = await mongoose.connect(ENV.DB_URL);
     console.log(" 🟩 Connected to MongoDB : ", conn.connection.host);
   } catch (error) {
-    console.error("Sorry Trouble Shoot the error ❌", error);
-    process.exit(1); // 0 means Success and one means Failure
-  }
+    console.error("❌ MongoDB connection failed:", error.message);
+    process.exit(1);
+  } // 0 : Success and one: Failure
 };
