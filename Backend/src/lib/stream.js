@@ -5,15 +5,15 @@ const apiKey = ENV.STREAM_API_KEY;
 const apiSecret = ENV.STREAM_API_SECRET;
 
 if (!apiKey || !apiSecret) {
-  console.error("Stream API_KEY or STREAM_API_SECRET is missing");
+  console.error("STREAM_API_KEY or STREAM_API_SECRET is missing");
 }
 
-export const chatclient = StreamChat.getInstance(apiKey, apiSecret);
+export const chatClient = StreamChat.getInstance(apiKey, apiSecret);
 
 export const upsertStreamUser = async (userData) => {
   try {
-    await chatclient.upsertUser(userData);
-    console.log("Stream User Upserted Successfully", userData);
+    await chatClient.upsertUser(userData);
+    console.log("Stream user upserted successfully:", userData);
   } catch (error) {
     console.error("Error upserting Stream user", error);
   }
@@ -21,11 +21,11 @@ export const upsertStreamUser = async (userData) => {
 
 export const deleteStreamUser = async (userId) => {
   try {
-    await chatclient.deleteUsers([userId]);
-    console.log("Stream User Deleted Successfully", userId);
+    await chatClient.deleteUser(userId);
+    console.log("Stream user deleted successfully:", userId);
   } catch (error) {
-    console.error("Error Deleting Stream user", error);
+    console.error("Error deleting Stream user", error);
   }
 };
 
-// todo : add another method to generate token
+//todo: add another method to generateToken
