@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
     msg: "success from the api ",
   });
 });
+
 app.get("/health", (req, res) => {
   res.status(200).json({
     msg: "success from the api ",
@@ -35,13 +36,8 @@ app.get("/Books", (req, res) => {
   });
 });
 
-if (ENV.NODE_ENV === "production") {
-  app.use(express.static(Path.join(__dirname, "../Frontend/dist")));
-
-  app.get("/{*any}", (req, res) => {
-    res.sendFile(Path.join(__dirname, "../Frontend", "dist", "index.html"));
-  });
-}
+// REMOVED THE PRODUCTION STATIC FILE SERVING
+// Since Frontend is deployed separately on Vercel
 
 const startServer = async () => {
   try {
