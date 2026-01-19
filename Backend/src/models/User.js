@@ -11,23 +11,18 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+
     profileImage: {
       type: String,
       default: "",
     },
-  },
-  {
     clerkId: {
       type: String,
       unique: true,
       required: true,
     },
   },
+
   {
     timestamps: true,
   },
