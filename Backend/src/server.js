@@ -1,11 +1,22 @@
 import express from "express";
 import { ENV } from "./lib/env.js";
 import Path from "path";
+import cors from "cors";
 import { connectDB } from "./lib/db.js";
+import { serve } from "inngest/express";
+import { inngest, functions } from "./src/inngest";
 
 const app = express();
 
 const __dirname = Path.resolve();
+
+//MiddleWares
+
+app.use(express.json());
+app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
+
+// Set up the "/api/inngest" (recommended) routes with the serve handler
+app.use("/api/inngest", serve({ client: inngest, functions }));
 
 app.get("/", (req, res) => {
   res.status(200).json({
