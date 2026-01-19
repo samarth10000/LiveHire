@@ -18,8 +18,8 @@ const userSchema = new mongoose.Schema(
     },
     clerkId: {
       type: String,
-      unique: true,
       required: true,
+      unique: true,
     },
   },
 

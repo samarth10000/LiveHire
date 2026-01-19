@@ -5,7 +5,7 @@ import User from "../models/User.js";
 export const inngest = new Inngest({ id: "Live-Hire" });
 
 const syncUser = inngest.createFunction(
-  { id: " sync -user " },
+  { id: "sync -user" },
   {
     event: "clerk/user.created",
   },
