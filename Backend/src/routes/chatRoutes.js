@@ -1,6 +1,7 @@
 import express from "express";
-import { ProtectRoute } from "../middleware/protectRoute";
+
 import { getStreamToken } from "../controllers/chatController";
+import { ProtectRoute } from "../middleware/protectRoute";
 
 const router = express.Router();
 
